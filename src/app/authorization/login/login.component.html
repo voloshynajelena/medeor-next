@@ -1,0 +1,17 @@
+<form [formGroup]="formGroup">
+    <div>
+        <mat-form-field class="example-form-field" appearance="fill">
+            <mat-label>Login</mat-label>
+            <input matInput type="text" formControlName="login" />
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-form-field class="example-form-field" appearance="fill">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" formControlName="password" />
+        </mat-form-field>
+    </div>
+
+    <button (click)="onSubmit()">Send</button>
+</form>

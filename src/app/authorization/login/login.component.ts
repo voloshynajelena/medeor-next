@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
 
         this.authService.signIn(login, pass).subscribe((data) => {
             if (data.token) {
-                localStorage.setItem(AuthService.AUTHENTICATION_TOKEN_ITEM, data.token);
+                localStorage.setItem(AuthService.AUTHENTICATION_TOKEN, data.token);
             }
         });
     }

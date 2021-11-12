@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Router } from '@angular/router';
 import { AuthActionsTypes, checkAuth, checkAuthComplete, loginComplete, logout, logoutComplete } from './auth.actions';
-import { map, switchMap, tap } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { AuthService } from '../auth.service';
 import { of } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -83,12 +83,12 @@ export class AuthEffects {
                     localStorage.removeItem(AuthService.AUTHENTICATION_TOKEN);
                     localStorage.removeItem(AuthService.USER_ID);
 
-                    // const exceptions = ['/registration', '/password'];
-                    // const isRedirect = !exceptions.some((exc) => location.pathname.includes(exc));
+                    const exceptions = ['/registration', '/password'];
+                    const isRedirect = !exceptions.some((exc) => location.pathname.includes(exc));
 
-                    // if (isRedirect) {
-                    this.router.navigate(['/login']);
-                    // }
+                    if (isRedirect) {
+                        this.router.navigate(['/login']);
+                    }
                 })
             ),
         { dispatch: false }

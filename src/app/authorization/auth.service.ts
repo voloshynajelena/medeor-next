@@ -12,7 +12,7 @@ export class AuthService {
     // ########################################
 
     private static readonly LOGIN = '/login';
-    private static readonly GET_USER_DATA = '/user';
+    private static readonly USER = '/user';
 
     // ########################################
 
@@ -31,13 +31,17 @@ export class AuthService {
         });
     }
 
+    public register(userData: any): Observable<UserRestInterface> {
+        return this.httpClient.post<UserRestInterface>(AuthService.USER, userData);
+    }
+
     // ########################################
 
     public getUserData(): Observable<UserModel> {
         const id: any = localStorage.getItem(AuthService.USER_ID);
 
         return this.httpClient
-            .get<UserRestInterface>(AuthService.GET_USER_DATA, {
+            .get<UserRestInterface>(AuthService.USER, {
                 params: { id }
             })
             .pipe(

@@ -1,1 +1,108 @@
-<p>registration works!</p>
+<mat-card class="registration-card">
+    <div class="header">
+        <div class="header__logo">Medeor</div>
+    </div>
+
+    <div class="registration-card-content">
+        <form class="registration-form" [formGroup]="formGroup">
+            <h2 class="title">Who you are?</h2>
+
+            <div class="form-line">
+                <div class="form-col">
+                    <mat-form-field appearance="fill">
+                        <mat-label>First name*</mat-label>
+                        <input matInput formControlName="name" />
+
+                        <mat-error *ngIf="nameCtrl.errors?.required">The field is required.</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="form-col">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Last name*</mat-label>
+                        <input matInput formControlName="surname" />
+
+                        <mat-error *ngIf="surnameCtrl.errors?.required">The field is required.</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="form-line">
+                <div class="form-col">
+                    <mat-form-field appearance="fill">
+                        <mat-label>E-mail*</mat-label>
+                        <input matInput formControlName="email" />
+
+                        <mat-error *ngIf="emailCtrl.errors?.required">The field is required.</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="form-col">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Phone*</mat-label>
+                        <input matInput formControlName="phone" />
+
+                        <mat-error *ngIf="phoneCtrl.errors?.required">The field is required.</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="form-line">
+                <div class="form-col">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Location</mat-label>
+                        <input matInput formControlName="location" />
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="form-line">
+                <div class="form-col">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Password*</mat-label>
+                        <input matInput formControlName="pass" [type]="hidePassword ? 'password' : 'text'" />
+                        <button tabindex="-1" type="button" mat-icon-button matSuffix (click)="hidePassword = !hidePassword">
+                            <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+                        </button>
+
+                        <mat-error *ngIf="passCtrl.errors?.required">The field is required.</mat-error>
+                        <mat-error *ngIf="passCtrl.errors?.minlength">The password must contain at least 6 characters</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="form-col">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Confirm password*</mat-label>
+                        <input matInput formControlName="confirm" [type]="hideConfirmPassword ? 'password' : 'text'" />
+                        <button tabindex="-1" type="button" mat-icon-button matSuffix (click)="hideConfirmPassword = !hideConfirmPassword">
+                            <mat-icon>{{ hideConfirmPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+                        </button>
+
+                        <mat-error *ngIf="confirmCtrl.errors?.required">The field is required.</mat-error>
+                        <mat-error *ngIf="confirmCtrl.errors?.minlength">The password must contain at least 6 characters</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="form-line">
+                <div class="form-col">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Link to photo</mat-label>
+                        <input matInput formControlName="photo" />
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="registration-form-action">
+                <button type="button" mat-raised-button color="primary" [disabled]="isLoading" (click)="onSubmit()">Register</button>
+
+                <button type="button" mat-button color="primary" routerLink="/login" [disabled]="isLoading">Cancel</button>
+            </div>
+        </form>
+
+        <div class="image-wrap">
+            <img src="/assets/img/doctors.jpg" alt="doctors" class="image-wrap__image" />
+            <div class="image-wrap__description">Describe yourself</div>
+        </div>
+    </div>
+</mat-card>

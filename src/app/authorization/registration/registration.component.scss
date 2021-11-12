@@ -1,0 +1,72 @@
+@import "src/assets/styles/colors";
+
+:host {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    ::ng-deep {
+        mat-form-field {
+            width: 100%;
+        }
+    }
+}
+
+.header {
+    width: 100%;
+    &__logo {
+        font-weight: 900;
+        color: $color-crepuscule;
+    }
+}
+
+.title {
+    text-align: center;
+    color: $color-black-main;
+}
+
+.registration-card {
+    width: 800px;
+    padding: 16px 32px;
+}
+
+.registration-form {
+    display: block;
+    flex: 0 0 415px;
+}
+
+.registration-card-content {
+    display: flex;
+    align-items: center;
+}
+
+.image-wrap {
+    flex: 1 1 auto;
+    margin-left: 30px;
+    &__image {
+        display: block;
+        width: 100%;
+    }
+    &__description {
+        margin: 5px;
+        font-size: 20px;
+        text-align: center;
+        color: $color-black-secondary;
+    }
+}
+
+.form-line {
+    display: flex;
+    margin-bottom: 5px;
+    .form-col {
+        flex: 1 1 100%;
+        &:not(:last-child) {
+            margin-right: 6px;
+        }
+    }
+}
+
+.registration-form-action {
+    display: flex;
+    justify-content: space-evenly;
+}

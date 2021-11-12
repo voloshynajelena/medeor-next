@@ -1,3 +1,5 @@
+@import "src/assets/styles/colors";
+
 html,
 body {
     height: 100%;
@@ -6,4 +8,14 @@ body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
     background: url("assets/img/blue-background.jpg") left bottom/cover;
+}
+
+.mat-flat-button, .mat-raised-button, .mat-fab, .mat-mini-fab {
+    &.mat-primary {
+        background-color: $color-crepuscule;
+    }
+}
+
+[mat-button].mat-primary {
+    color: $color-crepuscule;
 }

@@ -5,6 +5,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { SettingsComponent } from './settings/settings.component';
 import { AuthGuard } from './authorization/auth.guard';
 import { NotAuthGuard } from 'src/app/authorization/not-auth.guard';
+import { RegistrationComponent } from 'src/app/authorization/registration/registration.component';
 
 const routes: Routes = [
     {
@@ -16,6 +17,11 @@ const routes: Routes = [
         path: 'login',
         canActivate: [NotAuthGuard],
         component: LoginComponent,
+    },
+    {
+        path: 'registration',
+        canActivate: [NotAuthGuard],
+        component: RegistrationComponent,
     },
     {
         path: 'app',

@@ -25,7 +25,7 @@ export class AuthService {
 
     // ########################################
 
-    public signIn(login: string, pass: string): Observable<{ token: string; userId: string }> {
+    public signIn(login: string, pass: string): Observable<{ token: string; userId: string; error?: string }> {
         return this.httpClient.get<{ token: string; userId: string }>(AuthService.LOGIN, {
             params: { login, pass }
         });

@@ -1,22 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../store/app-state.interface';
 import { login } from '../store';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { selectAuthInfo } from 'src/app/authorization/store/auth.selectors';
 
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
     // ########################################
 
     public hidePassword = true;
 
     public isLoading = false;
+
+    // ########################################
+
+    private subscription = new Subscription();
 
     // ########################################
 
@@ -41,11 +47,27 @@ export class LoginComponent implements OnInit {
 
     // ########################################
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+        const authSub = this.store.select(selectAuthInfo).subscribe((authState) => {
+            if (authState.isAuth) {
+                this.router.navigate(['/app']);
+            } else {
+                this.isLoading = false;
+            }
+        });
+
+        this.subscription.add(authSub);
+    }
+
+    ngOnDestroy(): void {
+        this.subscription.unsubscribe();
+   }
 
     // ########################################
 
     public onSubmit(): void {
+        this.formGroup.markAllAsTouched();
+
         if (this.formGroup.valid) {
             const email = this.loginCtrl.value;
             const pass = this.passwordCtrl.value;

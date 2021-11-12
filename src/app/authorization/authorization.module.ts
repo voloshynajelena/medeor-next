@@ -10,9 +10,11 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthenticationTokenInterceptor } from './authentication-token.interceptor';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { RegistrationComponent } from './registration/registration.component';
 
 @NgModule({
-    declarations: [LoginComponent],
+    declarations: [LoginComponent, RegistrationComponent],
     imports: [
         CommonModule,
         MatFormFieldModule,
@@ -21,7 +23,8 @@ import { MatCardModule } from '@angular/material/card';
         ReactiveFormsModule,
         RouterModule,
         MatInputModule,
-        MatCardModule
+        MatCardModule,
+        MatSnackBarModule
     ],
     providers: [
         {

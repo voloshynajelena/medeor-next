@@ -5,12 +5,13 @@ import { AuthActionsTypes, checkAuth, checkAuthComplete, loginComplete, logout, 
 import { map, switchMap, tap } from 'rxjs/operators';
 import { AuthService } from '../auth.service';
 import { of } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable()
 export class AuthEffects {
     // ########################################
 
-    constructor(private actions$: Actions, private router: Router, private authService: AuthService) {}
+    constructor(private actions$: Actions, private router: Router, private authService: AuthService, private snackbar: MatSnackBar) {}
 
     // ########################################
 
@@ -19,12 +20,17 @@ export class AuthEffects {
             ofType(AuthActionsTypes.LOGIN),
             switchMap(({ login, pass }) => {
                 return this.authService.signIn(login, pass).pipe(
-                    tap(({ token, userId }) => {
-                        localStorage.setItem(AuthService.AUTHENTICATION_TOKEN, token);
-                        localStorage.setItem(AuthService.USER_ID, userId);
-                    }),
-                    map(({ token, userId }) => {
-                        return checkAuth();
+                    map((resp) => {
+                        if (resp.error) {
+                            this.snackbar.open(resp.error, 'Close', { duration: 6000 });
+
+                            return checkAuthComplete({ isAuth: false, userId: undefined });
+                        } else {
+                            localStorage.setItem(AuthService.AUTHENTICATION_TOKEN, resp.token);
+                            localStorage.setItem(AuthService.USER_ID, resp.userId);
+
+                            return checkAuth();
+                        }
                     })
                 );
             })
@@ -37,10 +43,6 @@ export class AuthEffects {
             map(() => {
                 const isAuth = !!localStorage.getItem(AuthService.AUTHENTICATION_TOKEN);
                 const userId = localStorage.getItem(AuthService.USER_ID) || undefined;
-
-                if (isAuth) {
-                    this.router.navigate(['/app']);
-                }
 
                 return checkAuthComplete({ isAuth, userId });
             })

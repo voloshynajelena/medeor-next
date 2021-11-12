@@ -16,9 +16,12 @@ import { AppState } from 'src/app/store/app-state.interface';
 import { selectAuthInfo } from 'src/app/authorization/store/auth.selectors';
 import { skip, take } from 'rxjs/operators';
 import { MatIconModule } from '@angular/material/icon';
+import { HeaderComponent } from './layout/header/header.component';
+import { SidebarComponent } from './layout/sidebar/sidebar.component';
+import { MenuComponent } from './layout/sidebar/menu/menu.component';
 
 @NgModule({
-    declarations: [AppComponent, LayoutComponent, SettingsComponent],
+    declarations: [AppComponent, LayoutComponent, SettingsComponent, HeaderComponent, SidebarComponent, MenuComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,

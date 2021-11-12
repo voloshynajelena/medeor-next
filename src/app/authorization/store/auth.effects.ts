@@ -42,10 +42,7 @@ export class AuthEffects {
                     this.router.navigate(['/app']);
                 }
 
-                return checkAuthComplete({
-                    isAuth,
-                    userId
-                });
+                return checkAuthComplete({ isAuth, userId });
             })
         )
     );

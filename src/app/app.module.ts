@@ -15,6 +15,7 @@ import { checkAuth } from 'src/app/authorization/store';
 import { AppState } from 'src/app/store/app-state.interface';
 import { selectAuthInfo } from 'src/app/authorization/store/auth.selectors';
 import { skip, take } from 'rxjs/operators';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
     declarations: [AppComponent, LayoutComponent, SettingsComponent],
@@ -24,6 +25,7 @@ import { skip, take } from 'rxjs/operators';
         BrowserAnimationsModule,
         HttpClientModule,
         AuthorizationModule,
+        MatIconModule,
         StoreModule.forRoot(appReducer),
         EffectsModule.forRoot(appEffects)
     ],

@@ -1,0 +1,71 @@
+@import "src/assets/styles/colors";
+
+:host {
+    display: flex;
+    height: 100%;
+    ::ng-deep {
+        mat-form-field {
+            width: 100%;
+        }
+    }
+}
+
+.login-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    margin: auto;
+}
+
+.login-card-content {
+    width: 235px;
+}
+
+.doctor-image {
+    display: block;
+    width: 180px;
+    margin: 15px auto;
+}
+
+.header {
+    width: 100%;
+    &__logo {
+        font-weight: 900;
+        color: $color-crepuscule;
+    }
+}
+
+.title {
+    text-align: center;
+    color: $color-black-main;
+}
+
+.login-form-hint {
+    margin: 20px 0;
+    a {
+        text-decoration: none;
+        color: $color-crepuscule;
+        font-weight: 900;
+        .material-icons {
+            font-size: inherit;
+            vertical-align: text-bottom;
+        }
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+.login-form-actions {
+    display: flex;
+    justify-content: center;
+}
+
+.login-form {
+    &__item {
+        & + & {
+            margin-top: 5px;
+        }
+    }
+}

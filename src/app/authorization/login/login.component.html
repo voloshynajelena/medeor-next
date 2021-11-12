@@ -1,17 +1,49 @@
-<form [formGroup]="formGroup">
-    <div>
-        <mat-form-field class="example-form-field" appearance="fill">
-            <mat-label>Login</mat-label>
-            <input matInput type="text" formControlName="login" />
-        </mat-form-field>
+<mat-card class="login-card">
+    <div class="header">
+        <div class="header__logo">Medeor</div>
     </div>
 
-    <div>
-        <mat-form-field class="example-form-field" appearance="fill">
-            <mat-label>Password</mat-label>
-            <input matInput type="password" formControlName="password" />
-        </mat-form-field>
-    </div>
+    <div class="login-card-content">
+        <h2 class="title">Login</h2>
 
-    <button (click)="onSubmit()">Send</button>
-</form>
+        <img src="assets/img/doctor-patient-see-doctor-png.png" alt="doctor" class="doctor-image" />
+
+        <form class="login-form" [formGroup]="formGroup">
+            <div class="login-form__item">
+                <mat-form-field appearance="fill">
+                    <mat-label>Email address</mat-label>
+                    <input matInput formControlName="login" placeholder="Email address" />
+                    <mat-icon matSuffix>person</mat-icon>
+
+                    <mat-error *ngIf="loginCtrl.errors?.required">The field is required.</mat-error>
+                    <mat-error *ngIf="loginCtrl.errors?.email">The email is invalid.</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="login-form__item">
+                <mat-form-field appearance="fill">
+                    <mat-label>Enter your password</mat-label>
+                    <input matInput formControlName="password" [type]="hidePassword ? 'password' : 'text'" />
+                    <button tabindex="-1" type="button" mat-icon-button matSuffix (click)="hidePassword = !hidePassword">
+                        <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+                    </button>
+
+                    <mat-error *ngIf="passwordCtrl.errors?.required">The field is required.</mat-error>
+                    <mat-error *ngIf="passwordCtrl.errors?.minlength">The password must contain at least 6 characters</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="login-form-hint">
+                Not your computer? Use a private browsing window to sign in.<br />
+                <a href="https://support.google.com/accounts?p=signin_privatebrowsing&amp;hl=en"
+                    >Learn more <span class="material-icons"> launch </span></a
+                >
+            </div>
+
+            <div class="login-form-actions">
+                <button type="button" mat-raised-button color="primary" (click)="onSubmit()" [disabled]="isLoading">Login</button>
+
+                <button type="button" mat-button color="primary" routerLink="/register" [disabled]="isLoading">Register</button>
+            </div>
+        </form>
+    </div>
+</mat-card>

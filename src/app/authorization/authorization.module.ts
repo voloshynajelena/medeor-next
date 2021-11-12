@@ -8,7 +8,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthenticationTokenInterceptor } from './authentication-token.interceptor';
-import {MatInputModule} from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
     declarations: [LoginComponent],
@@ -20,13 +21,14 @@ import {MatInputModule} from '@angular/material/input';
         ReactiveFormsModule,
         RouterModule,
         MatInputModule,
+        MatCardModule
     ],
     providers: [
         {
             provide: HTTP_INTERCEPTORS,
             multi: true,
-            useClass: AuthenticationTokenInterceptor,
-        },
-    ],
+            useClass: AuthenticationTokenInterceptor
+        }
+    ]
 })
 export class AuthorizationModule {}

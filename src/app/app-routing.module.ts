@@ -4,6 +4,7 @@ import { LoginComponent } from './authorization/login/login.component';
 import { LayoutComponent } from './layout/layout.component';
 import { SettingsComponent } from './settings/settings.component';
 import { AuthGuard } from './authorization/auth.guard';
+import { NotAuthGuard } from 'src/app/authorization/not-auth.guard';
 
 const routes: Routes = [
     {
@@ -13,6 +14,7 @@ const routes: Routes = [
     },
     {
         path: 'login',
+        canActivate: [NotAuthGuard],
         component: LoginComponent,
     },
     {

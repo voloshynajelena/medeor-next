@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
 @Injectable({
     providedIn: 'root'
 })
-export class AuthGuard implements CanActivate, CanActivateChild {
+export class NotAuthGuard implements CanActivate, CanActivateChild {
     // ########################################
 
     constructor(private router: Router, private store: Store<AuthState>) {}
@@ -20,11 +20,11 @@ export class AuthGuard implements CanActivate, CanActivateChild {
         return this.store.select(selectIsAuth).pipe(
             map((isAuth) => {
                 if (isAuth) {
-                    return true;
-                } else {
                     this.router.navigate(['/login']);
 
                     return false;
+                } else {
+                    return true;
                 }
             })
         );

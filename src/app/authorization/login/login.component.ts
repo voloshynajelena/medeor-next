@@ -1,23 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { AuthService } from '../auth.service';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../store/app-state.interface';
+import { login } from '../store';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
-    styleUrls: ['./login.component.scss'],
+    styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
     // ########################################
 
     public formGroup = new FormGroup({
-        login: new FormControl(''),
-        password: new FormControl(''),
+        login: new FormControl('voloshynajelena@gmail.com'),
+        password: new FormControl('123456')
     });
 
     // ########################################
 
-    constructor(private authService: AuthService) {}
+    constructor(private authService: AuthService, private store: Store<AppState>, private router: Router) {}
 
     // ########################################
 
@@ -36,14 +40,10 @@ export class LoginComponent implements OnInit {
     // ########################################
 
     public onSubmit(): void {
-        const login = this.loginCtrl.value;
+        const email = this.loginCtrl.value;
         const pass = this.passwordCtrl.value;
 
-        this.authService.signIn(login, pass).subscribe((data) => {
-            if (data.token) {
-                localStorage.setItem(AuthService.AUTHENTICATION_TOKEN, data.token);
-            }
-        });
+        this.store.dispatch(login({ login: email, pass }));
     }
 
     // ########################################

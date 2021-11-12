@@ -8,6 +8,7 @@ import { login } from 'src/app/authorization/store';
 import { selectIsAuth } from 'src/app/authorization/store/auth.selectors';
 import { Router } from '@angular/router';
 import { filter, take } from 'rxjs/operators';
+import { groupMatch } from 'src/app/shared/validators/groups-match.validator';
 
 @Component({
     selector: 'app-registration',
@@ -22,16 +23,21 @@ export class RegistrationComponent implements OnInit {
 
     public isLoading = false;
 
-    public formGroup = new FormGroup({
-        name: new FormControl('', [Validators.required]),
-        surname: new FormControl('', [Validators.required]),
-        email: new FormControl('', [Validators.required, Validators.email]),
-        phone: new FormControl('', [Validators.required]),
-        location: new FormControl(''),
-        photo: new FormControl(''),
-        pass: new FormControl('', [Validators.required, Validators.minLength(6)]),
-        confirm: new FormControl('', [Validators.required, Validators.minLength(6)])
-    });
+    public formGroup = new FormGroup(
+        {
+            name: new FormControl('', [Validators.required]),
+            surname: new FormControl('', [Validators.required]),
+            email: new FormControl('', [Validators.required, Validators.email]),
+            phone: new FormControl('', [Validators.required]),
+            location: new FormControl(''),
+            photo: new FormControl(''),
+            pass: new FormControl('', [Validators.required, Validators.minLength(6)]),
+            confirm: new FormControl('', [Validators.required, Validators.minLength(6)])
+        },
+        {
+            validators: groupMatch('pass', 'confirm')
+        }
+    );
 
     // ########################################
 

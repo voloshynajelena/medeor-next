@@ -19,6 +19,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { HeaderComponent } from './layout/header/header.component';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { MenuComponent } from './layout/sidebar/menu/menu.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
     declarations: [AppComponent, LayoutComponent, SettingsComponent, HeaderComponent, SidebarComponent, MenuComponent],
@@ -30,7 +32,9 @@ import { MenuComponent } from './layout/sidebar/menu/menu.component';
         AuthorizationModule,
         MatIconModule,
         StoreModule.forRoot(appReducer),
-        EffectsModule.forRoot(appEffects)
+        EffectsModule.forRoot(appEffects),
+        MatButtonModule,
+        MatTooltipModule
     ],
     providers: [
         {

@@ -1,0 +1,16 @@
+@import "src/assets/styles/colors";
+
+$button-size: 55px;
+
+.menu-button {
+    min-width: $button-size;
+    width: $button-size;
+    height: $button-size;
+    padding: 0;
+    border-radius: 0;
+    transition: .2s;
+    &_active {
+        background: $color-crepuscule;
+        color: #fff;
+    }
+}

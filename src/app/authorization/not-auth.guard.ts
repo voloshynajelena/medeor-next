@@ -20,7 +20,7 @@ export class NotAuthGuard implements CanActivate, CanActivateChild {
         return this.store.select(selectIsAuth).pipe(
             map((isAuth) => {
                 if (isAuth) {
-                    this.router.navigate(['/login']);
+                    this.router.navigate(['/app']);
 
                     return false;
                 } else {

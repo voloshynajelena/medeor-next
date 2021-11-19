@@ -3,10 +3,11 @@
         class="menu-button"
         mat-button
         color="primary"
-        [matTooltip]="item.title"
+        [matTooltip]="item.disabled ? '' : item.title"
         matTooltipPosition="right"
         [routerLink]="item.path"
         routerLinkActive="menu-button_active"
+        [disabled]="item.disabled"
     >
         <span class="material-icons">{{ item.matIcon }}</span>
     </button>

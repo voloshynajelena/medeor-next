@@ -1,11 +1,9 @@
-@import "src/assets/styles/colors";
-
-$button-size: 55px;
+@import "src/assets/styles/variables";
 
 .menu-button {
-    min-width: $button-size;
-    width: $button-size;
-    height: $button-size;
+    min-width: $aside-width;
+    width: $aside-width;
+    height: $aside-width;
     padding: 0;
     border-radius: 0;
     transition: .2s;

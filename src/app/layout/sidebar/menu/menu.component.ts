@@ -11,19 +11,20 @@ export class MenuComponent implements OnInit {
 
     public menu: MenuItemInterface[] = [
         {
-            title: 'List of patients',
-            path: 'patient-list',
+            title: 'Patients list',
+            path: 'patients-list',
             matIcon: 'groups'
         },
         {
-            title: 'Constructor of tests',
+            title: 'Tests constructor',
             path: 'constructor',
             matIcon: 'widgets'
         },
         {
             title: 'Norms',
             path: 'norms',
-            matIcon: 'feed'
+            matIcon: 'feed',
+            disabled: true
         },
         {
             title: 'Settings',

@@ -1,0 +1,25 @@
+<div class="action-message">
+    <div class="action-message__content">
+        <div class="action-message__icon-type" *ngIf="data.type !== actionMessageTypeEnum.NORMAL" [ngSwitch]="data.type">
+            <ng-template [ngSwitchCase]="actionMessageTypeEnum.SUCCESS">
+                <span class="action-message-icon action-message-icon_type_success material-icons">check_circle</span>
+            </ng-template>
+            <ng-template [ngSwitchCase]="actionMessageTypeEnum.WARNING">
+                <span class="action-message-icon action-message-icon_type_warning material-icons">warning</span>
+            </ng-template>
+            <ng-template [ngSwitchCase]="actionMessageTypeEnum.ERROR">
+                <span class="action-message-icon action-message-icon_type_error material-icons">error</span>
+            </ng-template>
+        </div>
+        <div class="action-message__text" [innerHTML]="data.message"></div>
+    </div>
+    <button
+        *ngIf="data.options.action"
+        class="action-message__action"
+        mat-stroked-button
+        color="primary"
+        (click)="snackBarRef.dismissWithAction()"
+    >
+        {{ data.options.action }}
+    </button>
+</div>

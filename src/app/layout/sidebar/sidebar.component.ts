@@ -1,15 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/store/app-state.interface';
+import { logout } from 'src/app/authorization/store';
 
 @Component({
-  selector: 'app-sidebar',
-  templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss']
+    selector: 'app-sidebar',
+    templateUrl: './sidebar.component.html',
+    styleUrls: ['./sidebar.component.scss']
 })
-export class SidebarComponent implements OnInit {
+export class SidebarComponent {
+    // ########################################
 
-  constructor() { }
+    constructor(private store: Store<AppState>) {}
 
-  ngOnInit(): void {
-  }
+    // ########################################
 
+    public onLogout(): void {
+        this.store.dispatch(logout());
+    }
+
+    // ########################################
 }

@@ -5,13 +5,14 @@ import { AuthActionsTypes, checkAuth, checkAuthComplete, loginComplete, logout, 
 import { map, switchMap } from 'rxjs/operators';
 import { AuthService } from '../auth.service';
 import { of } from 'rxjs';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActionMessage } from 'src/app/core/action-message/action-message';
+import { ActionMessageTypeEnum } from 'src/app/core/action-message/action-message.interface';
 
 @Injectable()
 export class AuthEffects {
     // ########################################
 
-    constructor(private actions$: Actions, private router: Router, private authService: AuthService, private snackbar: MatSnackBar) {}
+    constructor(private actions$: Actions, private router: Router, private authService: AuthService, private actionMessage: ActionMessage) {}
 
     // ########################################
 
@@ -22,7 +23,7 @@ export class AuthEffects {
                 return this.authService.signIn(login, pass).pipe(
                     map((resp) => {
                         if (resp.error) {
-                            this.snackbar.open(resp.error, 'Close', { duration: 6000 });
+                            this.actionMessage.show(resp.error, ActionMessageTypeEnum.ERROR);
 
                             return checkAuthComplete({ isAuth: false, userId: undefined });
                         } else {

@@ -21,9 +21,10 @@ import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { MenuComponent } from './layout/sidebar/menu/menu.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { ActionMessageComponent } from './core/action-message/action-message.component';
 
 @NgModule({
-    declarations: [AppComponent, LayoutComponent, SettingsComponent, HeaderComponent, SidebarComponent, MenuComponent],
+    declarations: [AppComponent, LayoutComponent, SettingsComponent, HeaderComponent, SidebarComponent, MenuComponent, ActionMessageComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,

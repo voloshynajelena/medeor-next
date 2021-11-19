@@ -1,0 +1,44 @@
+@import "src/assets/styles/variables";
+
+::ng-deep {
+    .mat-snack-bar-container {
+        max-width: 600px;
+        min-width: auto;
+        display: flex;
+        justify-content: center;
+        background: $color-background;
+        color: $color-black-main;
+    }
+}
+
+.action-message {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &__content {
+        display: flex;
+        align-items: center;
+    }
+    &__action {
+        margin-left: 10px;
+    }
+}
+
+.action-message-icon {
+    display: flex;
+    width: 1em;
+    height: 1em;
+    margin-right: 10px;
+    font-size: 2em;
+    &_type {
+        &_success {
+            color: $color-forest;
+        }
+        &_warning {
+            color: $color-sunset;
+        }
+        &_error {
+            color: $color-error;
+        }
+    }
+}

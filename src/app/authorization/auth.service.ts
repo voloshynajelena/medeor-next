@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { UserModel } from './user.model';
 import { UserRestInterface } from './user-rest.interface';
 import { map, tap } from 'rxjs/operators';
+import { RegistrationDataInterface } from 'src/app/authorization/registration/registration-data.interface';
 
 @Injectable({
     providedIn: 'root'
@@ -31,7 +32,7 @@ export class AuthService {
         });
     }
 
-    public register(userData: any): Observable<UserRestInterface> {
+    public register(userData: RegistrationDataInterface): Observable<UserRestInterface> {
         return this.httpClient.post<UserRestInterface>(AuthService.USER, userData);
     }
 

@@ -14,12 +14,12 @@
         <div class="action-message__text" [innerHTML]="data.message"></div>
     </div>
     <button
-        *ngIf="data.options.action"
+        *ngIf="data.options?.action"
         class="action-message__action"
         mat-stroked-button
         color="primary"
         (click)="snackBarRef.dismissWithAction()"
     >
-        {{ data.options.action }}
+        {{ data.options?.action }}
     </button>
 </div>

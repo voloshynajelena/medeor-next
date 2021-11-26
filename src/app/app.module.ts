@@ -21,10 +21,17 @@ import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { MenuComponent } from './layout/sidebar/menu/menu.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { ActionMessageComponent } from './core/action-message/action-message.component';
+import { CoreModule } from 'src/app/core/core.module';
 
 @NgModule({
-    declarations: [AppComponent, LayoutComponent, SettingsComponent, HeaderComponent, SidebarComponent, MenuComponent, ActionMessageComponent],
+    declarations: [
+        AppComponent,
+        LayoutComponent,
+        SettingsComponent,
+        HeaderComponent,
+        SidebarComponent,
+        MenuComponent
+    ],
     imports: [
         BrowserModule,
         AppRoutingModule,
@@ -35,7 +42,8 @@ import { ActionMessageComponent } from './core/action-message/action-message.com
         StoreModule.forRoot(appReducer),
         EffectsModule.forRoot(appEffects),
         MatButtonModule,
-        MatTooltipModule
+        MatTooltipModule,
+        CoreModule
     ],
     providers: [
         {

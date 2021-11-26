@@ -1,0 +1,6 @@
+<h2 class="title">{{ data?.title || 'Please, confirm your action' }}</h2>
+<div *ngIf="data?.text" class="text" [innerHTML]="data.text"></div>
+<div class="action">
+    <button class="action__btn" mat-raised-button color="warn" (click)="close()">{{ data?.cancelBtnText || 'Cancel' }}</button>
+    <button class="action__btn" mat-raised-button color="primary" (click)="accept()">{{ data?.acceptBtnText || 'Confirm' }}</button>
+</div>

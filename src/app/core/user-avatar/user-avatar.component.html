@@ -1,0 +1,6 @@
+<div *ngIf="(user$ | async) as user" class="user">
+    <svg class="user__sign" viewBox="0 0 25 25">
+        <text x="50%" y="50%" dy="1" dominant-baseline="middle" text-anchor="middle" font-size="11" fill="#fff">{{user.firstname[0] + user.lastname[0] | uppercase}}</text>
+    </svg>
+    <img *ngIf="user.photo && !isHiddenImage" src="{{user.photo}}" class="user__img" (error)="isHiddenImage = true" (load)="isHiddenImage = false" alt="avatar">
+</div>

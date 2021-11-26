@@ -1,0 +1,20 @@
+::ng-deep {
+    .confirmation-popup {
+        min-width: 400px;
+        max-width: 600px !important;
+    }
+}
+
+.text {
+    margin-bottom: 25px;
+}
+
+.action {
+    display: flex;
+    justify-content: flex-end;
+    &__btn {
+        &:not(:last-child) {
+            margin-right: 15px;
+        }
+    }
+}

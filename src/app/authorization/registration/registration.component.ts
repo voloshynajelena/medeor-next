@@ -9,6 +9,7 @@ import { selectIsAuth } from 'src/app/authorization/store/auth.selectors';
 import { Router } from '@angular/router';
 import { filter, take } from 'rxjs/operators';
 import { groupMatch } from 'src/app/shared/validators/groups-match.validator';
+import { ActionMessage } from 'src/app/core/action-message/action-message';
 
 @Component({
     selector: 'app-registration',
@@ -41,7 +42,13 @@ export class RegistrationComponent implements OnInit {
 
     // ########################################
 
-    constructor(private authService: AuthService, private snackbar: MatSnackBar, private store: Store<AuthState>, private router: Router) {}
+    constructor(
+        private authService: AuthService,
+        private snackbar: MatSnackBar,
+        private store: Store<AuthState>,
+        private router: Router,
+        private actionMessage: ActionMessage
+    ) {}
 
     // ########################################
 
@@ -96,7 +103,7 @@ export class RegistrationComponent implements OnInit {
                 const error = (user as any).error;
 
                 if (error) {
-                    this.snackbar.open(error, 'Close', { duration: 6000 });
+                    this.actionMessage.show(error);
                     this.isLoading = false;
                 } else {
                     this.store.dispatch(login({ login: email, pass }));

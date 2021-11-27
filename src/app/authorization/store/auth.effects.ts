@@ -12,7 +12,12 @@ import { ActionMessageTypeEnum } from 'src/app/core/action-message/action-messag
 export class AuthEffects {
     // ########################################
 
-    constructor(private actions$: Actions, private router: Router, private authService: AuthService, private actionMessage: ActionMessage) {}
+    constructor(
+        private actions$: Actions,
+        private router: Router,
+        private authService: AuthService,
+        private actionMessage: ActionMessage
+    ) {}
 
     // ########################################
 

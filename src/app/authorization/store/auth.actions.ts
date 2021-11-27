@@ -1,7 +1,7 @@
-import {createAction, props} from '@ngrx/store';
-import {AuthState} from './auth.reducer';
+import { createAction, props } from '@ngrx/store';
+import { AuthState } from './auth.reducer';
 
-export const enum AuthActionsTypes {
+export enum AuthActionsTypes {
     CHECK_AUTH = '[Auth] Check Auth',
     CHECK_AUTH_COMPLETE = '[Auth] Check Auth Complete',
 

@@ -10,6 +10,14 @@ body {
     background: url("assets/img/blue-background.jpg") left bottom/cover;
 }
 
+.row {
+    display: flex;
+    .col {
+        flex: 1 1 100%;
+        padding: 6px;
+    }
+}
+
 .mat-flat-button, .mat-raised-button, .mat-fab, .mat-mini-fab {
     &.mat-primary {
         background-color: $color-crepuscule;

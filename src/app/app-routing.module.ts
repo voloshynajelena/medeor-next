@@ -6,6 +6,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { AuthGuard } from './authorization/auth.guard';
 import { NotAuthGuard } from 'src/app/authorization/not-auth.guard';
 import { RegistrationComponent } from 'src/app/authorization/registration/registration.component';
+import { TestsConstructorComponent } from 'src/app/tests-constructor/tests-constructor.component';
 
 const routes: Routes = [
     {
@@ -30,9 +31,13 @@ const routes: Routes = [
         canActivateChild: [AuthGuard],
         children: [
             {
-                path: 'settings',
-                component: SettingsComponent,
+                path: 'constructor',
+                component: TestsConstructorComponent
             },
+            {
+                path: 'settings',
+                component: SettingsComponent
+            }
         ],
     },
 ];

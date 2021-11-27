@@ -22,6 +22,16 @@ import { MenuComponent } from './layout/sidebar/menu/menu.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { CoreModule } from 'src/app/core/core.module';
+import { TestsConstructorComponent } from './tests-constructor/tests-constructor.component';
+import { TestsListComponent } from './tests-constructor/tests/tests-list/tests-list.component';
+import { TestsFormComponent } from './tests-constructor/tests/tests-form/tests-form.component';
+import { TestsGroupListComponent } from './tests-constructor/tests-group/tests-group-list/tests-group-list.component';
+import { TestsGroupFormComponent } from './tests-constructor/tests-group/tests-group-form/tests-group-form.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatOptionModule } from '@angular/material/core';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
     declarations: [
@@ -30,7 +40,12 @@ import { CoreModule } from 'src/app/core/core.module';
         SettingsComponent,
         HeaderComponent,
         SidebarComponent,
-        MenuComponent
+        MenuComponent,
+        TestsConstructorComponent,
+        TestsListComponent,
+        TestsFormComponent,
+        TestsGroupListComponent,
+        TestsGroupFormComponent
     ],
     imports: [
         BrowserModule,
@@ -43,7 +58,12 @@ import { CoreModule } from 'src/app/core/core.module';
         EffectsModule.forRoot(appEffects),
         MatButtonModule,
         MatTooltipModule,
-        CoreModule
+        CoreModule,
+        MatInputModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        MatOptionModule,
+        MatTableModule
     ],
     providers: [
         {

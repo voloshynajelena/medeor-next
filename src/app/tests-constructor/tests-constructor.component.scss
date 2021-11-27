@@ -1,0 +1,48 @@
+@import "src/assets/styles/variables";
+
+:host {
+    display: flex;
+    width: 100%;
+    ::ng-deep {
+        mat-form-field {
+            width: 100%;
+        }
+
+        textarea {
+            resize: none !important;
+        }
+
+        .form-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            &__title {
+                font-size: 20px;
+                font-weight: 500;
+            }
+        }
+
+        .form-header-action-btn {
+            &:not(:last-child) {
+                margin-right: 10px;
+            }
+        }
+    }
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 100%;
+}
+
+.list {
+    display: block;
+    flex: 1 1 auto;
+}
+
+.divider {
+    border-right: 1px solid $color-grey-divider;
+    margin: 0 30px;
+}

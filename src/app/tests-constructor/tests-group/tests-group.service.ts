@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { TestsGroupRestInterface } from 'src/app/tests-constructor/tests-group/tests-group-rest.interface';
+import { TestsGroupPostInterface, TestsGroupRestInterface } from 'src/app/tests-constructor/tests-group/tests-group-rest.interface';
 
 @Injectable({ providedIn: 'root' })
 export class TestsGroupService {
@@ -20,7 +20,9 @@ export class TestsGroupService {
         return this.http.get<{ data: TestsGroupRestInterface[] }>(TestsGroupService.TEST_GROUPS).pipe(map((resp) => resp.data));
     }
 
-    // public createItem(): void {}
+    public addItem(data: TestsGroupPostInterface): Observable<TestsGroupRestInterface[]> {
+        return this.http.post<TestsGroupRestInterface[]>(TestsGroupService.TEST_GROUPS, data);
+    }
 
     // ########################################
 }

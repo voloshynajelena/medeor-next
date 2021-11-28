@@ -10,3 +10,9 @@ export interface TestsGroupRestInterface {
     tests: { typeId: string }[];
     typeId: string;
 }
+
+export interface TestsGroupPostInterface {
+    name: LangDataInterface;
+    description: LangDataInterface;
+    tests: { typeId: string }[];
+}

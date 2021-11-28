@@ -1,7 +1,7 @@
 import { Component, ElementRef, Inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Subject, Subscription } from 'rxjs';
-import { TESTS_EDIT } from 'src/app/tests-constructor/tests-constructor.tokens';
+import { Observable, Subject, Subscription } from 'rxjs';
+import { TEST_EDIT, TEST_CODE, TESTS_GROUP_IDS } from 'src/app/tests-constructor/tests-constructor.tokens';
 import { TestsPostInterface, TestsRestInterface } from 'src/app/tests-constructor/tests/tests-rest.interface';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/store/app-state.interface';
@@ -39,7 +39,9 @@ export class TestsFormComponent implements OnInit, OnDestroy {
     // ########################################
 
     constructor(
-        @Inject(TESTS_EDIT) public testsEditData: Subject<TestsRestInterface | null>,
+        @Inject(TEST_EDIT) public testsEditData: Subject<TestsRestInterface | null>,
+        @Inject(TEST_CODE) public testCode: Subject<string | null>,
+        @Inject(TESTS_GROUP_IDS) public testsGroupIds: Subject<string[] | null>,
         private store: Store<AppState>,
         private actions$: Actions
     ) {}
@@ -96,7 +98,6 @@ export class TestsFormComponent implements OnInit, OnDestroy {
     // ########################################
 
     public onSubmit(): void {
-        console.log(this.formGroup.value);
         if (this.formGroup.valid) {
             const data: TestsPostInterface = {
                 title: { en: this.titleCtrl.value },

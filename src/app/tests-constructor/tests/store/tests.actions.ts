@@ -9,6 +9,7 @@ export enum TestsActionsTypes {
     CLEAR_DATA = '[Tests] Clear Data',
 
     ADD_ITEM = '[Tests] Add item',
+    EDIT_ITEM = '[Tests] Edit item',
     REMOVE_ITEM = '[Tests] Remove item'
 }
 
@@ -18,5 +19,4 @@ export const getDataSuccess = createAction(TestsActionsTypes.GET_DATA_SUCCESS, p
 export const clearData = createAction(TestsActionsTypes.CLEAR_DATA);
 
 export const addItem = createAction(TestsActionsTypes.ADD_ITEM, props<TestsPostInterface>());
-
 export const removeItem = createAction(TestsActionsTypes.REMOVE_ITEM, props<{ typeId: string }>());

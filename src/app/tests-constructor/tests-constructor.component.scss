@@ -38,7 +38,7 @@
                 &:last-child {
                     border-bottom: none;
                 }
-                &:hover, &.active {
+                &:hover, &.active, &.compared {
                     background: rgba($divider-color, .05);
                 }
             }
@@ -46,6 +46,32 @@
             .mat-header-cell {
                 background: #ffffff;
                 font-size: 16px;
+            }
+        }
+
+        .text-limiter {
+            width: 100%;
+            position: relative;
+            &__content {
+                width: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+
+        .action-col {
+            justify-content: flex-end;
+            min-width: 150px;
+            max-width: 150px;
+        }
+
+        .action-btn {
+            &:not(:last-child) {
+                margin-right: 10px;
             }
         }
     }

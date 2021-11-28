@@ -1,9 +1,13 @@
-<form class="form">
+<form class="form" #testsGroupForm [formGroup]='formGroup' (ngSubmit)='onSubmit()'>
     <div class="form-header">
-        <div class="form-header__title">Groups of Tests</div>
+        <div class="form-header__title">All tests</div>
         <div class="form-header__action">
-            <button class="form-header-action-btn" mat-raised-button type="button">Reset</button>
-            <button class="form-header-action-btn" mat-raised-button color="primary">Add</button>
+            <button class="form-header-action-btn" type="reset" mat-raised-button (click)="onReset()">
+                {{ isEditMode ? 'Cancel' : 'Reset' }}
+            </button>
+            <button class="form-header-action-btn" type="submit" mat-raised-button color="primary">
+                {{ isEditMode ? 'Edit' : 'Add' }}
+            </button>
         </div>
     </div>
 
@@ -11,7 +15,7 @@
         <div class="col">
             <mat-form-field appearance="fill">
                 <mat-label>Group name</mat-label>
-                <input matInput />
+                <input matInput formControlName='name' />
             </mat-form-field>
         </div>
     </div>
@@ -19,7 +23,7 @@
         <div class="col">
             <mat-form-field appearance="fill">
                 <mat-label>Description</mat-label>
-                <textarea matInput></textarea>
+                <textarea matInput formControlName='description'></textarea>
             </mat-form-field>
         </div>
     </div>
@@ -27,7 +31,7 @@
         <div class="col">
             <mat-form-field appearance="fill">
                 <mat-label>Test id(s)</mat-label>
-                <mat-select multiple>
+                <mat-select multiple formControlName='tests'>
                     <mat-option *ngFor="let code of testIdList | async" [value]="code">{{ code }}</mat-option>
                 </mat-select>
             </mat-form-field>

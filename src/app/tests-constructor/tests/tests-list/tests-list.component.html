@@ -1,33 +1,41 @@
-<mat-table [dataSource]="data">
-    <ng-container matColumnDef="code">
-        <mat-header-cell *matHeaderCellDef class="code-col"> Code </mat-header-cell>
-        <mat-cell *matCellDef="let item" class="code-col"> {{ item.code }} </mat-cell>
-    </ng-container>
+<ng-scrollbar visibility="hover">
+    <mat-table [dataSource]="data" class="test-constructor-list">
+        <ng-container matColumnDef="code">
+            <mat-header-cell *matHeaderCellDef class="code-col"> Code </mat-header-cell>
+            <mat-cell *matCellDef="let item" class="code-col"> {{ item.code }} </mat-cell>
+        </ng-container>
 
-    <ng-container matColumnDef="title">
-        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-        <mat-cell *matCellDef="let item"> {{ item.title.en }} </mat-cell>
-    </ng-container>
+        <ng-container matColumnDef="title">
+            <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+            <mat-cell *matCellDef="let item"> {{ item.title.en }} </mat-cell>
+        </ng-container>
 
-    <ng-container matColumnDef="description">
-        <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
-        <mat-cell *matCellDef="let item">
-            <div class="text-limiter">
-                &nbsp; <div class="text-limiter__content">{{ item.description.en }}</div>
-            </div>
-        </mat-cell>
-    </ng-container>
+        <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+            <mat-cell *matCellDef="let item">
+                <div class="text-limiter">
+                    &nbsp;
+                    <div class="text-limiter__content">{{ item.description.en || '—' }}</div>
+                </div>
+            </mat-cell>
+        </ng-container>
 
-    <ng-container matColumnDef="actions">
-        <mat-header-cell *matHeaderCellDef class="action-col"> Actions </mat-header-cell>
-        <mat-cell *matCellDef="let item" class="action-col">
-            <button class="action-btn" mat-raised-button color="primary"><span class="material-icons">edit</span></button>
-            <button class="action-btn" mat-raised-button color="warn" (click)="remove(item)">
-                <span class="material-icons">delete_forever</span>
-            </button>
-        </mat-cell>
-    </ng-container>
+        <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef class="action-col"> Actions </mat-header-cell>
+            <mat-cell *matCellDef="let item" class="action-col">
+                <button class="action-btn" mat-raised-button color="primary" (click)="edit(item)">
+                    <span class="material-icons">edit</span>
+                </button>
+                <button class="action-btn" mat-raised-button color="warn" (click)="remove(item)">
+                    <span class="material-icons">delete_forever</span>
+                </button>
+            </mat-cell>
+        </ng-container>
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
-</mat-table>
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row
+            *matRowDef="let row; columns: displayedColumns"
+            [ngClass]="{ active: (testsEditData | async)?.typeId === row.typeId }"
+        ></mat-row>
+    </mat-table>
+</ng-scrollbar>

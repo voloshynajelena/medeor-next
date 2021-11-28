@@ -28,6 +28,26 @@
                 margin-right: 10px;
             }
         }
+
+        .test-constructor-list {
+            background: none;
+            .mat-row {
+                padding: 4px 0;
+                background: transparent;
+                transition: .2s;
+                &:last-child {
+                    border-bottom: none;
+                }
+                &:hover, &.active {
+                    background: rgba($divider-color, .05);
+                }
+            }
+
+            .mat-header-cell {
+                background: #ffffff;
+                font-size: 16px;
+            }
+        }
     }
 }
 
@@ -40,6 +60,11 @@
 .list {
     display: block;
     flex: 1 1 auto;
+    margin: 0 6px;
+    border: 1px solid $divider-color;
+    border-radius: 6px 6px 0 0;
+    overflow: hidden;
+    background: rgba(#ffffff, .9);
 }
 
 .divider {

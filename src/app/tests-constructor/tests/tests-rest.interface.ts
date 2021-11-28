@@ -10,3 +10,11 @@ export interface TestsRestInterface {
     unit: LangDataInterface;
     value: string;
 }
+
+export interface TestsPostInterface {
+    code: string;
+    description: LangDataInterface;
+    refValue: { min: string; max: string };
+    title: LangDataInterface;
+    unit: LangDataInterface;
+}

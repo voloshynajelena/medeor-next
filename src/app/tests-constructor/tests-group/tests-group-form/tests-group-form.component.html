@@ -1,4 +1,12 @@
-<form>
+<form class="form">
+    <div class="form-header">
+        <div class="form-header__title">Groups of Tests</div>
+        <div class="form-header__action">
+            <button class="form-header-action-btn" mat-raised-button type="button">Reset</button>
+            <button class="form-header-action-btn" mat-raised-button color="primary">Add</button>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col">
             <mat-form-field appearance="fill">
@@ -20,7 +28,7 @@
             <mat-form-field appearance="fill">
                 <mat-label>Test id(s)</mat-label>
                 <mat-select multiple>
-                    <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+                    <mat-option *ngFor="let code of testIdList | async" [value]="code">{{ code }}</mat-option>
                 </mat-select>
             </mat-form-field>
         </div>

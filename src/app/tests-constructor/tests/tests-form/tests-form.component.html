@@ -1,9 +1,13 @@
-<form class="form">
+<form class="form" #testsForm [formGroup]="formGroup" (ngSubmit)="onSubmit()">
     <div class="form-header">
         <div class="form-header__title">All tests</div>
         <div class="form-header__action">
-            <button class="form-header-action-btn" mat-raised-button type="button">Reset</button>
-            <button class="form-header-action-btn" mat-raised-button color="primary">Add</button>
+            <button class="form-header-action-btn" type="reset" mat-raised-button (click)="onReset()">
+                {{ isEditMode ? 'Cancel' : 'Reset' }}
+            </button>
+            <button class="form-header-action-btn" type="submit" mat-raised-button color="primary">
+                {{ isEditMode ? 'Edit' : 'Add' }}
+            </button>
         </div>
     </div>
 
@@ -11,13 +15,13 @@
         <div class="col">
             <mat-form-field appearance="fill">
                 <mat-label>Test name</mat-label>
-                <input matInput />
+                <input matInput formControlName="title" />
             </mat-form-field>
         </div>
         <div class="col">
             <mat-form-field appearance="fill">
                 <mat-label>Code</mat-label>
-                <input matInput />
+                <input matInput formControlName="code" />
             </mat-form-field>
         </div>
     </div>
@@ -25,7 +29,7 @@
         <div class="col">
             <mat-form-field appearance="fill">
                 <mat-label>Description</mat-label>
-                <textarea matInput></textarea>
+                <textarea matInput formControlName="description"></textarea>
             </mat-form-field>
         </div>
     </div>
@@ -33,19 +37,19 @@
         <div class="col">
             <mat-form-field appearance="fill">
                 <mat-label>Unit</mat-label>
-                <input matInput />
+                <input matInput formControlName="unit" />
             </mat-form-field>
         </div>
         <div class="col">
             <mat-form-field appearance="fill">
                 <mat-label>Min</mat-label>
-                <input matInput />
+                <input matInput formControlName="min" />
             </mat-form-field>
         </div>
         <div class="col">
             <mat-form-field appearance="fill">
                 <mat-label>Max</mat-label>
-                <input matInput />
+                <input matInput formControlName="max" />
             </mat-form-field>
         </div>
     </div>

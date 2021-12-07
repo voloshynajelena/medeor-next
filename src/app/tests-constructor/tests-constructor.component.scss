@@ -43,9 +43,13 @@
                 }
             }
 
+            .mat-header-row {
+                min-height: 40px;
+            }
+
             .mat-header-cell {
                 background: #ffffff;
-                font-size: 16px;
+                font-size: 14px;
             }
         }
 
@@ -74,6 +78,10 @@
                 margin-right: 10px;
             }
         }
+
+        .mat-form-field-wrapper {
+            margin-bottom: -1.34375em;
+        }
     }
 }
 
@@ -86,7 +94,7 @@
 .list {
     display: block;
     flex: 1 1 auto;
-    margin: 0 6px;
+    margin: 20px 6px 0;
     border: 1px solid $divider-color;
     border-radius: 6px 6px 0 0;
     overflow: hidden;

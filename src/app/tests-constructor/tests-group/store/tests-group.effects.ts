@@ -4,12 +4,14 @@ import { TestsGroupService } from 'src/app/tests-constructor/tests-group/tests-g
 import { getDataSuccess, TestsGroupActionsTypes } from 'src/app/tests-constructor/tests-group/store/tests-group.actions';
 import { map, mergeMap } from 'rxjs/operators';
 import { TestsGroupPostInterface } from 'src/app/tests-constructor/tests-group/tests-group-rest.interface';
+import { ActionMessageTypeEnum } from '../../../core/action-message/action-message.interface';
+import { ActionMessage } from '../../../core/action-message/action-message';
 
 @Injectable()
 export class TestsGroupEffects {
     // ########################################
 
-    constructor(private actions$: Actions, private testsGroupService: TestsGroupService) {}
+    constructor(private actions$: Actions, private testsGroupService: TestsGroupService, private actionMessage: ActionMessage) {}
 
     // ########################################
 
@@ -26,7 +28,15 @@ export class TestsGroupEffects {
         this.actions$.pipe(
             ofType(TestsGroupActionsTypes.ADD_ITEM),
             mergeMap((data: TestsGroupPostInterface) => {
-                return this.testsGroupService.addItem(data).pipe(map((items) => getDataSuccess({ items })));
+                return this.testsGroupService.addItem(data).pipe(
+                    map((items) => {
+                        this.actionMessage.show(`Tests group <b>${data.name.en}</b> was added`, ActionMessageTypeEnum.SUCCESS, {
+                            duration: 4000
+                        });
+
+                        return getDataSuccess({ items });
+                    })
+                );
             })
         )
     );

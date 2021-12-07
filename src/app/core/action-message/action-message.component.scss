@@ -6,7 +6,7 @@
         min-width: auto;
         display: flex;
         justify-content: center;
-        background: rgba(#000, .77);
+        background: rgba(#333, .95);
         color: $color-background-top-part;
     }
 }
@@ -36,7 +36,7 @@
     font-size: 2em;
     &_type {
         &_success {
-            color: $color-forest;
+            color: $color-success;
         }
         &_warning {
             color: $color-sunset;

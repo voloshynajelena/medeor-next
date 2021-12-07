@@ -17,22 +17,12 @@ export class ActionMessage {
         message: string,
         type: ActionMessageTypeEnum = ActionMessageTypeEnum.NORMAL,
         options?: ActionMessageOptionsInterface
-    ): void {
-        this.create(message, type, options);
-    }
-
-    // ########################################
-
-    private create(
-        message: string,
-        type: ActionMessageTypeEnum,
-        options: ActionMessageOptionsInterface = {}
     ): MatSnackBarRef<ActionMessageComponent> {
         return this.snackBar.openFromComponent(ActionMessageComponent, {
             data: { message, type, options },
-            duration: options.duration || 6000,
-            horizontalPosition: options.horizontalPosition || 'center',
-            verticalPosition: options.verticalPosition || 'bottom'
+            duration: options?.duration || 6000,
+            horizontalPosition: options?.horizontalPosition || 'right',
+            verticalPosition: options?.verticalPosition || 'bottom'
         });
     }
 

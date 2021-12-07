@@ -6,8 +6,8 @@
         min-width: auto;
         display: flex;
         justify-content: center;
-        background: $color-background;
-        color: $color-black-main;
+        background: rgba(#000, .77);
+        color: $color-background-top-part;
     }
 }
 
@@ -18,9 +18,13 @@
     &__content {
         display: flex;
         align-items: center;
+        font-weight: 500;
     }
     &__action {
-        margin-left: 10px;
+        margin-left: 15px;
+        color: $color-hex;
+        line-height: 28px;
+        background: $color-background-top-part;
     }
 }
 

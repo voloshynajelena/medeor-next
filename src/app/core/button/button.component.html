@@ -1,0 +1,9 @@
+<button class="mn-button {{ colorClassName }} {{ iconButtonClassName }} {{ sizeClassName }}" [disabled]="disabled" mat-flat-button>
+    <span *ngIf="iconButton; else textTemplate" class="material-icons icon_position_right">{{ iconButton }}</span>
+
+    <ng-template #textTemplate>
+        <span *ngIf="iconLeft && !iconRight" class="material-icons icon-left">{{ iconLeft }}</span>
+        <ng-content></ng-content>
+        <span *ngIf="iconRight && !iconLeft" class="material-icons icon-right">{{ iconRight }}</span>
+    </ng-template>
+</button>

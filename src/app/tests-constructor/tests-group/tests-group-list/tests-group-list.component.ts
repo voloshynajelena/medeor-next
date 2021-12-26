@@ -7,7 +7,6 @@ import { clearData, getData } from 'src/app/tests-constructor/tests-group/store/
 import { TEST_CODE, TESTS_GROUP_EDIT, TESTS_GROUP_IDS } from 'src/app/tests-constructor/tests-constructor.tokens';
 import { Subject } from 'rxjs';
 import { TestsGroupRestInterface } from 'src/app/tests-constructor/tests-group/tests-group-rest.interface';
-import { REMOVE_CONFIRMATION_BUTTONS_CONFIG } from '../../tests-constructor.config';
 
 @Component({
     selector: 'app-tests-group-list',
@@ -50,7 +49,7 @@ export class TestsGroupListComponent implements OnDestroy {
             .open({
                 title: 'Are you want to remove tests group?',
                 text: `[${item.typeId}] ${item.name.en}`,
-                ...REMOVE_CONFIRMATION_BUTTONS_CONFIG
+                acceptBtn: { text: 'Remove' }
             })
             .subscribe((deleting) => {
                 if (deleting) {

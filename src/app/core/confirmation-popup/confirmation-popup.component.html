@@ -1,20 +1,18 @@
 <h2 class="title">{{ data?.title || 'Please, confirm your action' }}</h2>
 <div *ngIf="data?.text" class="text" [innerHTML]="data.text"></div>
 <div class="action">
-    <button
-        class="action__btn {{ data?.cancelBtn?.className }}"
-        mat-raised-button
-        color="{{ data?.cancelBtn?.color || 'warn' }}"
+    <mn-button
+        class="action__btn"
+        [color]="data?.cancelBtn?.color || 'basic'"
+        [size]="data?.cancelBtn?.size || 'default'"
         (click)="close()"
+        >{{ data?.cancelBtn?.text || 'Cancel' }}</mn-button
     >
-        {{ data?.cancelBtn?.text || 'Cancel' }}
-    </button>
-    <button
-        class="action__btn {{ data?.acceptBtn?.className }}"
-        mat-raised-button
-        color="{{ data?.acceptBtn?.color || 'primary' }}"
+    <mn-button
+        class="action__btn"
+        [color]="data?.cancelBtn?.color || 'danger'"
+        [size]="data?.acceptBtn?.size || 'default'"
         (click)="accept()"
+        >{{ data?.acceptBtn?.text || 'Confirm' }}</mn-button
     >
-        {{ data?.acceptBtn?.text || 'Confirm' }}
-    </button>
 </div>

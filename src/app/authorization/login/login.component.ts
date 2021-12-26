@@ -27,8 +27,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     // ########################################
 
     public formGroup = new FormGroup({
-        login: new FormControl('', [Validators.required, Validators.email]),
-        password: new FormControl('', [Validators.required, Validators.minLength(6)])
+        login: new FormControl('voloshynajelena@gmail.com', [Validators.required, Validators.email]),
+        password: new FormControl('123456', [Validators.required, Validators.minLength(6)])
     });
 
     // ########################################

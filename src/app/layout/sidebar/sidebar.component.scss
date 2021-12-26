@@ -1,12 +1,12 @@
 @import "src/assets/styles/variables";
+@import "src/assets/styles/color-palette";
 
 :host {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 30px 0;
-    background: #fff;
-    border-right: 1px solid $color-grey-divider;
+    background: $color-dark;
 }
 
 .logo {
@@ -16,12 +16,9 @@
     font-size: 30px;
     text-transform: uppercase;
     text-align: center;
-    color: $color-crepuscule;
+    color: $color-primary;
 }
 
 .logout-btn {
-    min-width: $aside-width;
-    width: $aside-width;
-    height: $aside-width;
     margin-top: auto;
 }

@@ -12,4 +12,8 @@ export class SettingsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public test(): any {
+      alert('aa')
+  }
+
 }

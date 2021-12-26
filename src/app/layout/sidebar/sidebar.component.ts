@@ -7,7 +7,7 @@ import { ConfirmationPopup } from 'src/app/core/confirmation-popup/confirmation-
 @Component({
     selector: 'app-sidebar',
     templateUrl: './sidebar.component.html',
-    styleUrls: ['./sidebar.component.scss']
+    styleUrls: ['./sidebar.component.scss', '/src/app/layout/sidebar/menu/menu.component.scss']
 })
 export class SidebarComponent {
     // ########################################
@@ -17,7 +17,7 @@ export class SidebarComponent {
     // ########################################
 
     public onLogout(): void {
-        this.confirmationPopup.open({ title: 'Are you sure you want tot Logout?', acceptBtnText: 'Logout' }).subscribe((accepted) => {
+        this.confirmationPopup.open({ title: 'Are you sure you want tot Logout?', acceptBtn: { text: 'Logout' } }).subscribe((accepted) => {
             if (accepted) {
                 this.store.dispatch(logout());
             }

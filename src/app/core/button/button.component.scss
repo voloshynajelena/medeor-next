@@ -1,0 +1,105 @@
+@import "src/assets/styles/color-palette";
+
+$icon-margin: 4px;
+
+$size-small: 30px;
+$size-default: 40px;
+$size-large: 50px;
+
+
+:host {
+    display: inline-block;
+    vertical-align: middle;
+    &[ng-reflect-disabled] {
+        pointer-events: none;
+    }
+    ::ng-deep {
+        .mat-button-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .material-icons {
+            font-size: 1.5em;
+        }
+    }
+}
+
+.mn-button {
+    background: transparent;
+    color: rgba($color-dark, .7);
+    line-height: 1;
+    transition: .2s;
+    &:hover {
+        background: $color-disabled;
+    }
+    &:disabled, &[disabled] {
+        background: $color-disabled !important;
+    }
+    &-icon {
+        padding: 0 !important;
+    }
+}
+
+.mn-button_color {
+    &_primary {
+        background: $color-primary;
+        color: $color-light;
+        &:hover {
+            background: lighten($color-primary, 5);
+        }
+    }
+    &_warning {
+        background: $color-warning;
+        color: $color-light;
+        &:hover {
+            background: lighten($color-warning, 10);
+        }
+    }
+    &_danger {
+        background: $color-danger;
+        color: $color-light;
+        &:hover {
+            background: lighten($color-danger, 10);
+        }
+    }
+}
+
+.mn-button_size {
+    &_small {
+        height: $size-small;
+        padding: 0 18px;
+        font-size: 10px;
+        &.mn-button-icon {
+            min-width: $size-small;
+            width: $size-small;
+        }
+    }
+    &_default {
+        height: $size-default;
+        padding: 0 24px;
+        font-size: 14px;
+        &.mn-button-icon {
+            min-width: $size-default;
+            width: $size-default;
+        }
+    }
+    &_large {
+        height: $size-large;
+        padding: 0 32px;
+        font-size: 18px;
+        &.mn-button-icon {
+            min-width: $size-large;
+            width: $size-large;
+        }
+    }
+}
+
+.icon-left {
+    margin-right: $icon-margin;
+}
+
+.icon-right {
+    margin-left: $icon-margin;
+}

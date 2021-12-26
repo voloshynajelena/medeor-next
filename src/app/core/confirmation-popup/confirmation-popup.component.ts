@@ -11,8 +11,8 @@ export class ConfirmationPopupComponent {
     // ########################################
 
     constructor(
-        private dialogRef: MatDialogRef<ConfirmationPopupComponent>,
-        @Inject(MAT_DIALOG_DATA) public data: ConfirmationPopupDataInterface
+        @Inject(MAT_DIALOG_DATA) public data: ConfirmationPopupDataInterface,
+        private dialogRef: MatDialogRef<ConfirmationPopupComponent>
     ) {}
 
     // ########################################

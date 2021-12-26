@@ -5,11 +5,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { UserAvatarComponent } from './user-avatar/user-avatar.component';
 import { ConfirmationPopupComponent } from './confirmation-popup/confirmation-popup.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ButtonComponent } from './button/button.component';
 
 @NgModule({
-    declarations: [ActionMessageComponent, UserAvatarComponent, ConfirmationPopupComponent],
+    declarations: [ActionMessageComponent, UserAvatarComponent, ConfirmationPopupComponent, ButtonComponent],
     exports: [
-        UserAvatarComponent
+        UserAvatarComponent,
+        ButtonComponent
     ],
     imports: [CommonModule, MatButtonModule, MatDialogModule]
 })

@@ -7,7 +7,6 @@ import { ConfirmationPopup } from 'src/app/core/confirmation-popup/confirmation-
 import { TEST_EDIT, TEST_CODE, TESTS_GROUP_IDS } from 'src/app/tests-constructor/tests-constructor.tokens';
 import { Subject } from 'rxjs';
 import { AppState } from 'src/app/store/app-state.interface';
-import { REMOVE_CONFIRMATION_BUTTONS_CONFIG } from '../../tests-constructor.config';
 
 @Component({
     selector: 'app-tests-list',
@@ -47,7 +46,7 @@ export class TestsListComponent implements OnDestroy {
 
     public onRemove(item: TestsRestInterface): void {
         this.confirmationPopup
-            .open({ title: 'Are you want to remove test?', text: `[${item.code}] ${item.title.en}`, ...REMOVE_CONFIRMATION_BUTTONS_CONFIG })
+            .open({ title: 'Are you want to remove test?', text: `[${item.code}] ${item.title.en}`, acceptBtn: { text: 'Remove' } })
             .subscribe((deleting) => {
                 if (deleting) {
                     this.store.dispatch(removeItem({ typeId: item.typeId }));

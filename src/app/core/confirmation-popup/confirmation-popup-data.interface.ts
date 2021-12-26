@@ -1,9 +1,11 @@
+import { ButtonColor, ButtonSize } from 'src/app/core/button/button.configuration';
+
 export interface ConfirmationPopupButtonOptions {
     text: string;
-    color?: 'primary' | 'accent' | 'warn' | 'basic';
+    color?: ButtonColor;
+    size?: ButtonSize;
     disabled?: boolean;
     hidden?: boolean;
-    className?: string;
 }
 
 export interface ConfirmationPopupDataInterface {
